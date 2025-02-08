@@ -1,6 +1,6 @@
 using NerdStore.Modules.Catalogo.Domain.Events;
 using NerdStore.Modules.Catalogo.Domain.Repositories;
-using NerdStore.Modules.Core.Bus;
+using NerdStore.Modules.Core.Communication.Mediator;
 
 namespace NerdStore.Modules.Catalogo.Domain.Services;
 

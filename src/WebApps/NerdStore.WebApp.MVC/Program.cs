@@ -1,30 +1,9 @@
-using Microsoft.EntityFrameworkCore;
 using NerdStore.Catalogo.Application.AutoMapper;
-using NerdStore.Modules.Catalogo.Infrastructure.Context;
 using NerdStore.WebApp.MVC.Setup;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//     options.UseSqlServer(connectionString));
-
-builder.Services.AddDbContext<CatalogoContext>(options =>
-        options.UseSqlServer(connectionString, x => x.MigrationsAssembly(typeof(CatalogoContext).Namespace)));
-
-// builder.Services.AddDbContext<VendasContext>(options =>
-//         options.UseSqlServer(connectionString, x => x.MigrationsAssembly(typeof(VendasContext).Namespace)));
-
-// builder.Services.AddDbContext<PagamentoContext>(options =>
-//         options.UseSqlServer(connectionString, x => x.MigrationsAssembly(typeof(PagamentoContext).Namespace)));
-
-// builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-// builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//     .AddEntityFrameworkStores<ApplicationDbContext>();
-
+builder.Services.AddDatabaseContext(builder.Configuration);
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(DomainToDtoMappingProfile), typeof(DtoToDomainMappingProfile));
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));

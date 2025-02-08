@@ -5,6 +5,8 @@
     <ProjectReference Include="..\..\Modules\Core\NerdStore.Core\NerdStore.Core.csproj" />
     <ProjectReference Include="..\..\Modules\Catalogo\NerdStore.Catalogo.Domain\NerdStore.Catalogo.Domain.csproj" />
     <ProjectReference Include="..\..\Modules\Catalogo\NerdStore.Catalogo.Infrastructure\NerdStore.Catalogo.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Modules\Vendas\NerdStore.Vendas.Application\NerdStore.Vendas.Application.csproj" />
+    <ProjectReference Include="..\..\Modules\Vendas\NerdStore.Vendas.Infrastructure\NerdStore.Vendas.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

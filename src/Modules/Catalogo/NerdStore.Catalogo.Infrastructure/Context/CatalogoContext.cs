@@ -29,8 +29,7 @@ public class CatalogoContext : DbContext, IUnitOfWork
 
         builder.Ignore<Event>();
 
-        // builder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly); 
-        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());       
+        builder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
