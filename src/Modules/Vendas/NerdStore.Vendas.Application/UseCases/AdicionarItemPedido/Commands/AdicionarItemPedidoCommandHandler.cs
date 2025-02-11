@@ -38,7 +38,7 @@ public class AdicionarItemPedidoCommandHandler : IRequestHandler<AdicionarItemPe
 
         if(pedido is null)
         {
-            CriarRascunho(message, pedido, pedidoItem);
+            pedido = CriarRascunho(message, pedidoItem);
         }
         else
         {
@@ -53,13 +53,14 @@ public class AdicionarItemPedidoCommandHandler : IRequestHandler<AdicionarItemPe
         return await _pedidoRepository.UnitOfWork.Commit();
     }
 
-    private void CriarRascunho(AdicionarItemPedidoCommand message, Pedido pedido, PedidoItem pedidoItem)
+    private Pedido CriarRascunho(AdicionarItemPedidoCommand message, PedidoItem pedidoItem)
     {
-        pedido = Pedido.PedidoFactory.NovoPedidoRascunho(message.ClienteId);
+        var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(message.ClienteId);
         pedido.AdicionarItem(pedidoItem);
 
         _pedidoRepository.Adicionar(pedido);
         pedido.AdicionarEvento(new PedidoRascunhoIniciadoEvent(message.ClienteId, message.ProdutoId));
+        return pedido;
     }
 
     private void AdicionarItem(Pedido pedido, PedidoItem pedidoItem)

@@ -18,6 +18,11 @@ public class MessageBus : IMessageBus
         return await _mediator.Send(comando);
     }
 
+    public async Task<TResult> EnviarQuery<TQuery, TResult>(TQuery query) where TQuery : IRequest<TResult>
+    {
+        return await _mediator.Send(query);
+    }
+
     public async Task PublicarEvento<T>(T evento) where T : Event
     {
         await _mediator.Publish(evento);

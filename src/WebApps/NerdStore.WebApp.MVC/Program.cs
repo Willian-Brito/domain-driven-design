@@ -1,5 +1,7 @@
 using NerdStore.Catalogo.Application.AutoMapper;
 using NerdStore.WebApp.MVC.Setup;
+using Microsoft.AspNetCore.Identity;
+using NerdStore.WebApp.MVC.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(DomainToDtoMappingProfile), typeof(DtoToDomainMappingProfile));
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddDependencyInjection();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 
@@ -29,5 +34,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Vitrine}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();

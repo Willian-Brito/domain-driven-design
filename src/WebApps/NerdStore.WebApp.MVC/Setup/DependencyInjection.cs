@@ -10,9 +10,14 @@ using NerdStore.Modules.Core.Messages.CommonMessages.Notifications;
 using NerdStore.Modules.Vendas.Application.UseCases.AdicionarItemPedido.Commands;
 using NerdStore.Modules.Vendas.Application.UseCases.AdicionarItemPedido.Events;
 using NerdStore.Modules.Vendas.Application.UseCases.AtualizarItemPedido.Events;
+using NerdStore.Modules.Vendas.Application.UseCases.ObterCarrinhoCliente.Queries;
+using NerdStore.Modules.Vendas.Application.UseCases.ObterCarrinhoCliente.ViewModel;
+using NerdStore.Modules.Vendas.Application.UseCases.ObterPedidosCliente.Queries;
+using NerdStore.Modules.Vendas.Application.UseCases.ObterPedidosCliente.ViewModel;
 using NerdStore.Modules.Vendas.Domain.Repositories;
 using NerdStore.Modules.Vendas.Infrastructure.Context;
 using NerdStore.Modules.Vendas.Infrastructure.Repositories;
+using NerdStore.WebApp.MVC.Data;
 
 namespace NerdStore.WebApp.MVC.Setup;
 
@@ -39,7 +44,8 @@ public static class DependencyInjection
 
         //Vendas
         services.AddScoped<IPedidoRepository, PedidoRepository>();
-        // services.AddScoped<IPedidoQueries, PedidoQueries>();
+        services.AddScoped<IRequestHandler<ObterCarrinhoClienteQuery, CarrinhoViewModel>, ObterCarrinhoClienteQuery.ObterCarrinhoClienteQueryHandler>();
+        services.AddScoped<IRequestHandler<ObterPedidosClienteQuery, IEnumerable<PedidoViewModel>>, ObterPedidosClienteQuery.ObterPedidosClienteQueryHandler>();
 
         services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, AdicionarItemPedidoCommandHandler>();           
         // services.AddScoped<IRequestHandler<AtualizarItemPedidoCommand, bool>, PedidoCommandHandler>();
@@ -63,6 +69,9 @@ public static class DependencyInjection
         // services.AddScoped<IPagamentoCartaoCreditoFacade, PagamentoCartaoCreditoFacade>();
         // services.AddScoped<IPayPalGateway, PayPalGateway>();
         // services.AddScoped<IConfigManager,ConfigManager>();
+
+        // var handlers = AppDomain.CurrentDomain.Load("NerdStore.Vendas.Application");
+        // services.AddMediatR(config => config.RegisterServicesFromAssemblies(handlers));
     }
 
     public static void AddDatabaseContext(this IServiceCollection services, IConfiguration configuration)
@@ -70,8 +79,8 @@ public static class DependencyInjection
         // Add services to the container.
         var connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-        // services.AddDbContext<ApplicationDbContext>(options =>
-        //     options.UseSqlServer(connectionString));
+        services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(connectionString));
 
         services.AddDbContext<CatalogoContext>(options =>
                 options.UseSqlServer(connectionString, x => x.MigrationsAssembly(typeof(CatalogoContext).Namespace)));
