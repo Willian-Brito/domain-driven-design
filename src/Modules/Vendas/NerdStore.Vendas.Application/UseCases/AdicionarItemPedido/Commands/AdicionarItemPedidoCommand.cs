@@ -1,10 +1,14 @@
 using FluentValidation;
+using NerdStore.Modules.Core.Communication.Mediator;
 using NerdStore.Modules.Core.Messages;
+using NerdStore.Modules.Vendas.Application.Base;
 
 namespace NerdStore.Modules.Vendas.Application.UseCases.AdicionarItemPedido.Commands;
 
-public class AdicionarItemPedidoCommand : Command
+public class AdicionarItemPedidoCommand : PedidoCommand
 {
+    private readonly IMessageBus _messageBus;
+    
     public Guid ClienteId { get; private set; }
     public Guid ProdutoId { get; private set; }
     public string Nome { get; private set; }
@@ -12,12 +16,13 @@ public class AdicionarItemPedidoCommand : Command
     public decimal ValorUnitario { get; private set; }
 
     public AdicionarItemPedidoCommand(
+        IMessageBus _messageBus,
         Guid clienteId, 
         Guid produtoId, 
         string nome, 
         int quantidade, 
         decimal valorUnitario
-    )
+    ) : base(_messageBus)
     {
         ClienteId = clienteId;
         ProdutoId = produtoId;

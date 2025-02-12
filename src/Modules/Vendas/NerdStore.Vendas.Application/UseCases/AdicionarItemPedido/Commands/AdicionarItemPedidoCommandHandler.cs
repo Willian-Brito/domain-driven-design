@@ -1,7 +1,5 @@
 using MediatR;
 using NerdStore.Modules.Core.Communication.Mediator;
-using NerdStore.Modules.Core.Messages;
-using NerdStore.Modules.Core.Messages.CommonMessages.Notifications;
 using NerdStore.Modules.Vendas.Application.UseCases.AdicionarItemPedido.Events;
 using NerdStore.Modules.Vendas.Application.UseCases.AtualizarItemPedido.Events;
 using NerdStore.Modules.Vendas.Domain.Aggregates;
@@ -24,7 +22,7 @@ public class AdicionarItemPedidoCommandHandler : IRequestHandler<AdicionarItemPe
 
     public async Task<bool> Handle(AdicionarItemPedidoCommand message, CancellationToken cancellationToken)
     {
-        if(!ValidarComando(message)) return false;
+        if(!message.ValidarComando()) return false;
 
         var result = await AdicionarPedido(message);
 
@@ -76,18 +74,5 @@ public class AdicionarItemPedidoCommandHandler : IRequestHandler<AdicionarItemPe
         }
 
         _pedidoRepository.AdicionarItem(pedidoItem);
-    }
-
-    public bool ValidarComando(Command message)
-    {
-        if(message.EhValido()) return true;
-
-
-        foreach(var error in message.ValidationResult.Errors)
-        {
-            _messageBus.PublicarNotificacao(new DomainNotification(message.MessageType, error.ErrorMessage));
-        }
-
-        return false;
     }
 }
