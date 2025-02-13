@@ -7,13 +7,25 @@ using NerdStore.Modules.Catalogo.Domain.Services;
 using NerdStore.Modules.Catalogo.Infrastructure.Context;
 using NerdStore.Modules.Core.Communication.Mediator;
 using NerdStore.Modules.Core.Messages.CommonMessages.Notifications;
+using NerdStore.Modules.Pagamentos.AntiCorruption.Config;
+using NerdStore.Modules.Pagamentos.AntiCorruption.Facade;
+using NerdStore.Modules.Pagamentos.AntiCorruption.Gateways;
+using NerdStore.Modules.Pagamentos.Business.Facade;
+using NerdStore.Modules.Pagamentos.Business.Repositories;
+using NerdStore.Modules.Pagamentos.Business.Services;
+using NerdStore.Modules.Pagamentos.Data.Context;
+using NerdStore.Modules.Pagamentos.Data.Repositories;
 using NerdStore.Modules.Vendas.Application.UseCases.AdicionarItemPedido.Commands;
 using NerdStore.Modules.Vendas.Application.UseCases.AdicionarItemPedido.Events;
+using NerdStore.Modules.Vendas.Application.UseCases.AplicarVoucher.Commands;
+using NerdStore.Modules.Vendas.Application.UseCases.AtualizarItemPedido.Commands;
 using NerdStore.Modules.Vendas.Application.UseCases.AtualizarItemPedido.Events;
+using NerdStore.Modules.Vendas.Application.UseCases.IniciarPedido.Commands;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterCarrinhoCliente.Queries;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterCarrinhoCliente.ViewModel;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterPedidosCliente.Queries;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterPedidosCliente.ViewModel;
+using NerdStore.Modules.Vendas.Application.UseCases.RemoverItemPedido.Commands;
 using NerdStore.Modules.Vendas.Domain.Repositories;
 using NerdStore.Modules.Vendas.Infrastructure.Context;
 using NerdStore.Modules.Vendas.Infrastructure.Repositories;
@@ -48,10 +60,10 @@ public static class DependencyInjection
         services.AddScoped<IRequestHandler<ObterPedidosClienteQuery, IEnumerable<PedidoViewModel>>, ObterPedidosClienteQuery.ObterPedidosClienteQueryHandler>();
 
         services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, AdicionarItemPedidoCommandHandler>();           
-        // services.AddScoped<IRequestHandler<AtualizarItemPedidoCommand, bool>, PedidoCommandHandler>();
-        // services.AddScoped<IRequestHandler<RemoverItemPedidoCommand, bool>, PedidoCommandHandler>();
-        // services.AddScoped<IRequestHandler<AplicarVoucherPedidoCommand, bool>, PedidoCommandHandler>();
-        // services.AddScoped<IRequestHandler<IniciarPedidoCommand, bool>, PedidoCommandHandler>();
+        // services.AddScoped<IRequestHandler<AtualizarItemPedidoCommand, bool>, AtualizarItemPedidoCommandHandler>();
+        // services.AddScoped<IRequestHandler<RemoverItemPedidoCommand, bool>, RemoverItemPedidoCommandHandler>();
+        // services.AddScoped<IRequestHandler<AplicarVoucherPedidoCommand, bool>, AplicarVoucherPedidoCommandHandler>();
+        services.AddScoped<IRequestHandler<IniciarPedidoCommand, bool>, IniciarPedidoCommandHandler>();
         // services.AddScoped<IRequestHandler<FinalizarPedidoCommand, bool>, PedidoCommandHandler>();
         // services.AddScoped<IRequestHandler<CancelarProcessamentoPedidoCommand, bool>, PedidoCommandHandler>();
         // services.AddScoped<IRequestHandler<CancelarProcessamentoPedidoEstornarEstoqueCommand, bool>, PedidoCommandHandler>();
@@ -64,11 +76,11 @@ public static class DependencyInjection
         // services.AddScoped<INotificationHandler<PagamentoRecusadoEvent>, PedidoEventHandler>();
 
         // Pagamento
-        // services.AddScoped<IPagamentoRepository, PagamentoRepository>();
-        // services.AddScoped<IPagamentoService, PagamentoService>();
-        // services.AddScoped<IPagamentoCartaoCreditoFacade, PagamentoCartaoCreditoFacade>();
-        // services.AddScoped<IPayPalGateway, PayPalGateway>();
-        // services.AddScoped<IConfigManager,ConfigManager>();
+        services.AddScoped<IPagamentoRepository, PagamentoRepository>();
+        services.AddScoped<IPagamentoService, PagamentoService>();
+        services.AddScoped<IPagamentoCartaoCreditoFacade, PagamentoCartaoCreditoFacade>();
+        services.AddScoped<IPayPalGateway, PayPalGateway>();
+        services.AddScoped<IConfigManager,ConfigManager>();
 
         // var handlers = AppDomain.CurrentDomain.Load("NerdStore.Vendas.Application");
         // services.AddMediatR(config => config.RegisterServicesFromAssemblies(handlers));
@@ -88,8 +100,8 @@ public static class DependencyInjection
         services.AddDbContext<VendasContext>(options =>
                 options.UseSqlServer(connectionString, x => x.MigrationsAssembly(typeof(VendasContext).Namespace)));
 
-        // services.AddDbContext<PagamentoContext>(options =>
-        //         options.UseSqlServer(connectionString, x => x.MigrationsAssembly(typeof(PagamentoContext).Namespace)));
+        services.AddDbContext<PagamentoContext>(options =>
+                options.UseSqlServer(connectionString, x => x.MigrationsAssembly(typeof(PagamentoContext).Namespace)));
 
         // services.AddDatabaseDeveloperPageExceptionFilter();
 

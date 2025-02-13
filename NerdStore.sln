@@ -33,6 +33,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdStore.Vendas.Applicatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdStore.Vendas.Infrastructure", "src\Modules\Vendas\NerdStore.Vendas.Infrastructure\NerdStore.Vendas.Infrastructure.csproj", "{A4C040E2-A5A4-404B-A07D-C5B0737DB89A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pagamentos", "Pagamentos", "{940B863D-53DB-4111-9178-05803CA966B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdStore.Pagamentos.Data", "src\Modules\Pagamentos\NerdStore.Pagamentos.Data\NerdStore.Pagamentos.Data.csproj", "{40A4169C-4B89-4E9A-A730-D97D142D381D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdStore.Pagamentos.Business", "src\Modules\Pagamentos\NerdStore.Pagamentos.Business\NerdStore.Pagamentos.Business.csproj", "{B9145873-8C2E-41D0-B28B-BD1BE18C0F90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdStore.Pagamentos.AntiCorruption", "src\Modules\Pagamentos\NerdStore.Pagamentos.AntiCorruption\NerdStore.Pagamentos.AntiCorruption.csproj", "{D5860270-245E-4DAB-8030-F35B4709096E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +86,18 @@ Global
 		{A4C040E2-A5A4-404B-A07D-C5B0737DB89A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4C040E2-A5A4-404B-A07D-C5B0737DB89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4C040E2-A5A4-404B-A07D-C5B0737DB89A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40A4169C-4B89-4E9A-A730-D97D142D381D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40A4169C-4B89-4E9A-A730-D97D142D381D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40A4169C-4B89-4E9A-A730-D97D142D381D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40A4169C-4B89-4E9A-A730-D97D142D381D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9145873-8C2E-41D0-B28B-BD1BE18C0F90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9145873-8C2E-41D0-B28B-BD1BE18C0F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9145873-8C2E-41D0-B28B-BD1BE18C0F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9145873-8C2E-41D0-B28B-BD1BE18C0F90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5860270-245E-4DAB-8030-F35B4709096E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5860270-245E-4DAB-8030-F35B4709096E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5860270-245E-4DAB-8030-F35B4709096E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5860270-245E-4DAB-8030-F35B4709096E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D48C45D1-972A-44CE-9586-8C2653A797FF} = {5AAFD990-7814-43D2-98AB-8BA620F34238}
@@ -94,5 +114,9 @@ Global
 		{64F71073-2E9B-413C-AF4A-7B8BC9083604} = {E5AD710C-5B87-48F0-93B9-BD953EEBC0FC}
 		{AC24D321-65E4-43EE-9FAE-8771C69E2FB2} = {E5AD710C-5B87-48F0-93B9-BD953EEBC0FC}
 		{A4C040E2-A5A4-404B-A07D-C5B0737DB89A} = {E5AD710C-5B87-48F0-93B9-BD953EEBC0FC}
+		{940B863D-53DB-4111-9178-05803CA966B1} = {D48C45D1-972A-44CE-9586-8C2653A797FF}
+		{40A4169C-4B89-4E9A-A730-D97D142D381D} = {940B863D-53DB-4111-9178-05803CA966B1}
+		{B9145873-8C2E-41D0-B28B-BD1BE18C0F90} = {940B863D-53DB-4111-9178-05803CA966B1}
+		{D5860270-245E-4DAB-8030-F35B4709096E} = {940B863D-53DB-4111-9178-05803CA966B1}
 	EndGlobalSection
 EndGlobal

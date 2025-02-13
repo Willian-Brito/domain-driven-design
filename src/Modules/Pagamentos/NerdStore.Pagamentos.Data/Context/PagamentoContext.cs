@@ -1,40 +1,40 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using NerdStore.Modules.Core.Communication.Mediator;
 using NerdStore.Modules.Core.Data;
 using NerdStore.Modules.Core.Messages;
-using NerdStore.Modules.Vendas.Domain.Aggregates;
-using NerdStore.Modules.Vendas.Domain.Entities;
-using NerdStore.Modules.Vendas.Infrastructure.Extension;
+using NerdStore.Modules.Pagamentos.Business.Aggregates;
+using NerdStore.Modules.Pagamentos.Business.Entities;
+using NerdStore.Modules.Pagamentos.Data.Extensions;
 
-namespace NerdStore.Modules.Vendas.Infrastructure.Context;
+namespace NerdStore.Modules.Pagamentos.Data.Context;
 
-public class VendasContext : DbContext, IUnitOfWork
+public class PagamentoContext : DbContext, IUnitOfWork
 {
-    public DbSet<Pedido> Pedidos { get; set; }
-    public DbSet<PedidoItem> PedidoItems { get; set; }
-    public DbSet<Voucher> Vouchers { get; set; }
     private readonly IMessageBus _messageBus;
+    public DbSet<Pagamento> Pagamentos { get; set; }
+    public DbSet<Transacao> Transacoes { get; set; }
 
-    public VendasContext(){ }
-    public VendasContext(DbContextOptions<VendasContext> options, IMessageBus messageBus) : base(options) 
+    public PagamentoContext() { }
+
+    public PagamentoContext(DbContextOptions<PagamentoContext> options, IMessageBus messageBus) : base(options)
     {
         _messageBus = messageBus;
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
+        foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
+            e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
             property.SetColumnType("varchar(100)");
 
         modelBuilder.Ignore<Event>();
 
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(VendasContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(PagamentoContext).Assembly);
 
         foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) 
             relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
-
-        modelBuilder.HasSequence<int>("MinhaSequencia").StartsAt(1000).IncrementsBy(1);
+            
         base.OnModelCreating(modelBuilder);
     }
 
@@ -47,7 +47,7 @@ public class VendasContext : DbContext, IUnitOfWork
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(connectionString);
 
-            optionsBuilder.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+            // optionsBuilder.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
         }        
     }
 
@@ -67,7 +67,7 @@ public class VendasContext : DbContext, IUnitOfWork
         }
 
         var sucesso = await base.SaveChangesAsync() > 0;
-        if(sucesso) await _messageBus.PublicarEventos(this);
+        if (sucesso) await _messageBus.PublicarEventos(this);
 
         return sucesso;
     }
