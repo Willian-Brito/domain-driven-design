@@ -84,16 +84,16 @@ public class EstoqueService : IEstoqueService
     }
 
     private async Task<bool> ReporItemEstoque(Guid produtoId, int quantidade)
-        {
-            var produto = await _produtoRepository.ObterPorId(produtoId);
+    {
+        var produto = await _produtoRepository.ObterPorId(produtoId);
 
-            if (produto == null) return false;
-            produto.ReporEstoque(quantidade);
+        if (produto == null) return false;
+        produto.ReporEstoque(quantidade);
 
-            _produtoRepository.Atualizar(produto);
+        _produtoRepository.Atualizar(produto);
 
-            return true;
-        }
+        return true;
+    }
     #endregion
 
     public void Dispose()

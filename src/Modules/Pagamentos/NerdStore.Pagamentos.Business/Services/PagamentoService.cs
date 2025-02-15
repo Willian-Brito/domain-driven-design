@@ -50,6 +50,7 @@ public class PagamentoService : IPagamentoService
 
         if (transacao.StatusTransacao == StatusTransacao.Pago)
         {
+            pagamento.Status = "Pago";
             pagamento.AdicionarEvento(
                 new PagamentoRealizadoEvent(
                     pedido.Id, 

@@ -47,6 +47,12 @@ public class ProdutoRepository : IProdutoRepository
 
     public void Atualizar(Produto produto)
     {
+        var trackedEntity = _context.Produtos.Local.FirstOrDefault(p => p.Id == produto.Id);
+        if (trackedEntity != null)
+        {
+            _context.Entry(trackedEntity).State = EntityState.Detached;
+        }
+
         _context.Produtos.Update(produto);
     }
 

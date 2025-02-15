@@ -19,17 +19,23 @@ public class AplicarVoucherPedidoCommand : PedidoCommand
         CodigoVoucher = codigoVoucher;
     }
 
-    public class AplicarVoucherPedidoValidation : AbstractValidator<AplicarVoucherPedidoCommand>
+    public override bool EhValido()
     {
-        public AplicarVoucherPedidoValidation()
-        {
-            RuleFor(c => c.ClienteId)
-                .NotEqual(Guid.Empty)
-                .WithMessage("Id do cliente inválido");
+        ValidationResult = new AplicarVoucherPedidoValidation().Validate(this);
+        return ValidationResult.IsValid;
+    }
+}
 
-            RuleFor(c => c.CodigoVoucher)
-                .NotEmpty()
-                .WithMessage("O código do voucher não pode ser vazio");
-        }
+public class AplicarVoucherPedidoValidation : AbstractValidator<AplicarVoucherPedidoCommand>
+{
+    public AplicarVoucherPedidoValidation()
+    {
+        RuleFor(c => c.ClienteId)
+            .NotEqual(Guid.Empty)
+            .WithMessage("Id do cliente inválido");
+
+        RuleFor(c => c.CodigoVoucher)
+            .NotEmpty()
+            .WithMessage("O código do voucher não pode ser vazio");
     }
 }

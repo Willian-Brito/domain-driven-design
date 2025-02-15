@@ -5,9 +5,12 @@ using NerdStore.Catalogo.Application.Services;
 using NerdStore.Modules.Core.Communication.Mediator;
 using NerdStore.Modules.Core.Messages.CommonMessages.Notifications;
 using NerdStore.Modules.Vendas.Application.UseCases.AdicionarItemPedido.Commands;
+using NerdStore.Modules.Vendas.Application.UseCases.AplicarVoucher.Commands;
+using NerdStore.Modules.Vendas.Application.UseCases.AtualizarItemPedido.Commands;
 using NerdStore.Modules.Vendas.Application.UseCases.IniciarPedido.Commands;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterCarrinhoCliente.Queries;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterCarrinhoCliente.ViewModel;
+using NerdStore.Modules.Vendas.Application.UseCases.RemoverItemPedido.Commands;
 using Base = NerdStore.WebApp.Controllers.Base;
 
 namespace NerdStore.WebApp.Controllers.Ecommerce;
@@ -64,54 +67,53 @@ public class CarrinhoController : Base.ControllerBase
         return RedirectToAction("ProdutoDetalhe", "Vitrine", new { id });
     }
 
-    // [HttpPost]
-    // [Route("remover-item")]
-    // public async Task<IActionResult> RemoverItem(Guid id)
-    // {
-    //     var produto = await produtoService.ObterPorId(id);
-    //     if (produto == null) return BadRequest();
+    [HttpPost]
+    [Route("remover-item")]
+    public async Task<IActionResult> RemoverItem(Guid id)
+    {
+        var produto = await _produtoService.ObterPorId(id);
+        if (produto == null) return BadRequest();
 
-    //     var command = new RemoverItemPedidoCommand(ClienteId, id);
-    //     await _mediatorHandler.EnviarComando(command);
+        var command = new RemoverItemPedidoCommand(_messageBus, ClienteId, id);
+        await _messageBus.EnviarComando(command);
 
-    //     if (OperacaoValida()) return RedirectToAction("Index");
+        if (OperacaoValida()) return RedirectToAction("'Index");
 
+        var carrinho = await GetCarrinhoViewModel();
 
-    //     return View("Index", await _pedidoQueries.ObterCarrinhoCliente(ClienteId));
-    // }
+        return View("Index", carrinho);
+    }
 
-    // [HttpPost]
-    // [Route("atualizar-item")]
-    // public async Task<IActionResult> AtualizarItem(Guid id, int quantidade)
-    // {
-    //     var produto = await _produtoAppService.ObterPorId(id);
-    //     if (produto == null) return BadRequest();
+    [HttpPost]
+    [Route("atualizar-item")]
+    public async Task<IActionResult> AtualizarItem(Guid id, int quantidade)
+    {
+        var produto = await _produtoService.ObterPorId(id);
+        if (produto == null) return BadRequest();
 
-    //     var command = new AtualizarItemPedidoCommand(ClienteId, id, quantidade);
-    //     await _mediatorHandler.EnviarComando(command);
+        var command = new AtualizarItemPedidoCommand(_messageBus, ClienteId, id, quantidade);
+        await _messageBus.EnviarComando(command);
 
-    //     if (OperacaoValida())
-    //     {
-    //         return RedirectToAction("Index");
-    //     }
+        if (OperacaoValida()) return RedirectToAction("Index");        
 
-    //     return View("Index", await _pedidoQueries.ObterCarrinhoCliente(ClienteId));
-    // }
+        var carrinho = await GetCarrinhoViewModel();
 
-    // [HttpPost]
-    // [Route("aplicar-voucher")]
-    // public async Task<IActionResult> AplicarVoucher(string voucherCodigo)
-    // {
-    //     var command = new AplicarVoucherPedidoCommand(ClienteId, voucherCodigo);
-    //     await _mediatorHandler.EnviarComando(command);
+        return View("Index", carrinho);
+    }
 
-    //     if (OperacaoValida())
-    //     {
-    //         return RedirectToAction("Index");
-    //     }
+    [HttpPost]
+    [Route("aplicar-voucher")]
+    public async Task<IActionResult> AplicarVoucher(string voucherCodigo)
+    {
+        var command = new AplicarVoucherPedidoCommand(_messageBus, ClienteId, voucherCodigo);
+        await _messageBus.EnviarComando(command);
 
-    //     return View("Index", await _pedidoQueries.ObterCarrinhoCliente(ClienteId));
-    // }
+        if (OperacaoValida()) return RedirectToAction("Index");
+
+        var carrinho = await GetCarrinhoViewModel();
+
+        return View("Index", carrinho);
+    }
 
     [Route("resumo-da-compra")]
     public async Task<IActionResult> ResumoDaCompra()

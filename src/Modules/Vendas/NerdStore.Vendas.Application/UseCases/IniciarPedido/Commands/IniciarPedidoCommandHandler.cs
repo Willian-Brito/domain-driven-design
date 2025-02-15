@@ -9,13 +9,11 @@ namespace NerdStore.Modules.Vendas.Application.UseCases.IniciarPedido.Commands;
 
 public class IniciarPedidoCommandHandler : IRequestHandler<IniciarPedidoCommand, bool>
 {
-    private readonly IPedidoRepository _pedidoRepository;
-    private readonly IMessageBus _messageBus;
+    private readonly IPedidoRepository _pedidoRepository;    
 
-    public IniciarPedidoCommandHandler(IPedidoRepository pedidoRepository, IMessageBus messageBus)
+    public IniciarPedidoCommandHandler(IPedidoRepository pedidoRepository)
     {
-        _pedidoRepository = pedidoRepository;
-        _messageBus = messageBus;
+        _pedidoRepository = pedidoRepository;        
     }
 
     public async Task<bool> Handle(IniciarPedidoCommand message, CancellationToken cancellationToken)

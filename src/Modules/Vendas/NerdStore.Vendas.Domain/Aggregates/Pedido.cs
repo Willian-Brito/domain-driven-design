@@ -1,3 +1,4 @@
+using FluentValidation.Results;
 using NerdStore.Modules.Core.DomainObjects;
 using NerdStore.Modules.Vendas.Domain.Entities;
 using NerdStore.Modules.Vendas.Domain.Enum;
@@ -38,16 +39,16 @@ public class Pedido : Entity, IAggregateRoot
 
     #region Metodos
 
-    public void AplicarVoucher(Voucher voucher)
+    public ValidationResult AplicarVoucher(Voucher voucher)
     {
-        // var validationResult = voucher.ValidarSeAplicavel();
-        // if (!validationResult.IsValid) return validationResult;
+        var validationResult = voucher.ValidarSeAplicavel();
+        if (!validationResult.IsValid) return validationResult;
 
         Voucher = voucher;
         VoucherUtilizado = true;
         CalcularValorPedido();
 
-        // return validationResult;
+        return validationResult;
     }
 
     public void CalcularValorPedido()

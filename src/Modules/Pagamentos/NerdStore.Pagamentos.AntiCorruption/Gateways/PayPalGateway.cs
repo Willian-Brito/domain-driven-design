@@ -7,7 +7,7 @@ public class PayPalGateway : IPayPalGateway
     public bool CommitTransaction(string cardHashKey, string orderId, decimal amount)
     {
         return new Random().Next(2) == 0;
-        //return false;
+        // return false;
     }
 
     public string GetCardHashKey(string serviceKey, string cartaoCredito)
