@@ -158,14 +158,13 @@ Cada contexto adota uma arquitetura específica baseada em sua complexidade e re
 
 - **MVC (Model-View-Controller):** Para a interface do usuário, foi adotado o padrão MVC (Model-View-Controller), utilizando o ASP.NET MVC.
 
-### 📝 Exemplo de Monolito Modular:
+### 📝 Arquitetura Monolito Modular:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/arquitetura-monolito-modular.png" alt="exemplo de arquitetura" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/arquitetura-monolito-modular.png" alt="exemplo de arquitetura" style="width: 80%; height: 80%;" />
 </div>
 
-### 📝 Estrutura do Projeto
-
+### 📄 Estrutura do Projeto
 <div align="center">
   <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/modules-2.png" alt="modelo de arquitetura no asp net" />
 </div>
