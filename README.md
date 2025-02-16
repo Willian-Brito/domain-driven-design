@@ -1,3 +1,9 @@
+# 🌐 Nerd Store
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/logo.png" alt="logo" />
+</div>
+
 ## 💻 Sobre o projeto
 O **NerdStore** é um projeto voltado para aplicabilidade dos conceitos de **Domain-Driven Design (DDD)** e **Arquitetura Orientada a Eventos**. O objetivo foi construir um e-commerce estruturado com base na modelagem estratégica e tática do DDD, garantindo uma arquitetura bem definida e alinhada aos requisitos do negócio.
 
@@ -75,7 +81,9 @@ Com essa estrutura, foram definidos os **contextos delimitados**, elaborando um 
 
 - **Fiscal:** Responsável pela emissão da nota fiscal após a confirmação do pagamento, garantindo conformidade com as obrigações fiscais.
 
-Contextos Delimitados.png
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/contextos-delimitados.png" alt="contextos delimitados" />
+</div>
 
 ## 📚 Subdomínios (Principais, Auxiliares e Genéricos)
 
@@ -93,7 +101,9 @@ Contextos Delimitados.png
 
     - **Pagamentos:** Processa transações financeiras e atualiza o status dos pedidos.
 
-Dominios e Subdominios.png
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/subdominios.png" alt="separação de dominios" />
+</div>
 
 ## 🗺️ Mapa de Contexto
 
@@ -116,7 +126,9 @@ Dominios e Subdominios.png
 
 - **Núcleo Compartilhado:** Contextos que compartilham um modelo de dados comum para evitar duplicação de informações e garantir consistência. Isso ocorre quando múltiplos módulos utilizam as mesmas entidades fundamentais.
 
-Mapa de Contexto - eCommerce.png
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/mapa-contexto.png" alt="mapa de contexto" />
+</div>
 
 ## 🧩 Arquitetura
 
@@ -146,15 +158,19 @@ Cada contexto adota uma arquitetura específica baseada em sua complexidade e re
 
 - **MVC (Model-View-Controller):** Para a interface do usuário, foi adotado o padrão MVC (Model-View-Controller), utilizando o ASP.NET MVC.
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/modules-2.png" alt="modelo de arquitetura no asp net" />
+</div>
+
 ## 🎨 Layout 
 
 #### Demo
 <div align="center">
-  <img src="https://github.com/Willian-Brito/aiko-learning-client/blob/main/src/assets/gif/demo.gif?raw=true" alt="demo" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/logo.png" alt="demo" />
 </div>
 
 ## 📝 Licença
 
-Este projeto esta sobe a licença [MIT](https://github.com/Willian-Brito/aiko-learning-client/blob/main/LICENSE).
+Este projeto esta sobe a licença [MIT](https://github.com/Willian-Brito/domain-driven-design/blob/main/LICENSE).
 
 Feito com ❤️ por Willian Brito 👋🏽 [Entre em contato!](https://www.linkedin.com/in/willian-ferreira-brito/)
