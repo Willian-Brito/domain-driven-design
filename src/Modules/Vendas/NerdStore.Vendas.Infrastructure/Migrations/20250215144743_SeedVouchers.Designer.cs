@@ -143,10 +143,10 @@ namespace NerdStore.Vendas.Infrastructure.Migrations
                             Id = new Guid("d4e1f2a3-b567-c890-1234-56789abcdef0"),
                             Ativo = true,
                             Codigo = "WILL-V30",
-                            DataCriacao = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DataValidade = new DateTime(2024, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataCriacao = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataValidade = new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Quantidade = 1,
-                            TipoDescontoVoucher = 0,
+                            TipoDescontoVoucher = 1,
                             Utilizado = false,
                             ValorDesconto = 30m
                         },
@@ -155,11 +155,11 @@ namespace NerdStore.Vendas.Infrastructure.Migrations
                             Id = new Guid("a1b2c3d4-e5f6-7890-1234-abcdef987654"),
                             Ativo = true,
                             Codigo = "WILL-P10",
-                            DataCriacao = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DataValidade = new DateTime(2024, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataCriacao = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataValidade = new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Percentual = 10m,
                             Quantidade = 1,
-                            TipoDescontoVoucher = 1,
+                            TipoDescontoVoucher = 0,
                             Utilizado = false
                         });
                 });

@@ -18,8 +18,8 @@ namespace NerdStore.Vendas.Infrastructure.Migrations
                 columns: new[] { "Id", "Ativo", "Codigo", "DataCriacao", "DataUtilizacao", "DataValidade", "Percentual", "Quantidade", "TipoDescontoVoucher", "Utilizado", "ValorDesconto" },
                 values: new object[,]
                 {
-                    { new Guid("a1b2c3d4-e5f6-7890-1234-abcdef987654"), true, "WILL-P10", new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, new DateTime(2024, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 10m, 1, 1, false, null },
-                    { new Guid("d4e1f2a3-b567-c890-1234-56789abcdef0"), true, "WILL-V30", new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, new DateTime(2024, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 0, false, 30m }
+                    { new Guid("a1b2c3d4-e5f6-7890-1234-abcdef987654"), true, "WILL-P10", new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 10m, 1, 0, false, null },
+                    { new Guid("d4e1f2a3-b567-c890-1234-56789abcdef0"), true, "WILL-V30", new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, false, 30m }
                 });
         }
 
