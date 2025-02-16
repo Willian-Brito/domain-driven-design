@@ -171,27 +171,27 @@ Cada contexto adota uma arquitetura específica baseada em sua complexidade e re
 
 ## 🎨 Layout 
 
-#### Gerenciamento de Produtos
+### 🖥️ Gerenciamento de Produtos
 <div align="center">
   <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-administracao.png" alt="tela de administração de produtos" />
 </div>
 
-#### Catalogo de Produtos
+### 🖥️ Catalogo de Produtos
 <div align="center">
   <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-vitrine.png" alt="tela de vitrine de produtos" />
 </div>
 
-#### Carrinho de Compras
+### 🖥️ Carrinho de Compras
 <div align="center">
   <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-carrinho.png" alt="tela de carrinho de compras" />
 </div>
 
-#### Detalhe do Produto
+### 🖥️ Detalhe do Produto
 <div align="center">
   <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-produto.png" alt="tela do detalhe do produto" />
 </div>
 
-#### Pagamento
+### 🖥️ Pagamento
 <div align="center">
   <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-pagamento.png" alt="tela de pagamento" />
 </div>
