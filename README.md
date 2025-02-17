@@ -69,22 +69,6 @@ Com essa estrutura, foram definidos os **contextos delimitados**, elaborando um 
 
 - **Nota Fiscal:** Documento emitido após a confirmação do pagamento, formalizando a venda e garantindo a legalidade da transação.
 
-## 📦 Contextos Delimitados
-
-- **Cadastros:** Responsável pelo gerenciamento dos dados dos clientes, incluindo informações pessoais, endereços e preferências.
-
-- **Catálogo:** Gerencia a vitrine de produtos disponíveis para venda, suas descrições, imagens, preços e categorias.
-
-- **Vendas:** Envolve todo o fluxo de compras, desde a adição de produtos ao carrinho até a finalização do pedido.
-
-- **Pagamentos:** Lida com a validação e processamento de pagamentos via cartão de crédito, além da atualização do status do pedido com base na resposta da transação.
-
-- **Fiscal:** Responsável pela emissão da nota fiscal após a confirmação do pagamento, garantindo conformidade com as obrigações fiscais.
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/contextos-delimitados.png" alt="contextos delimitados" />
-</div>
-
 ## 📚 Subdomínios (Principais, Auxiliares e Genéricos)
 
 - **Domínios Principais:** São o coração do negócio e representam a essência do e-commerce, ou seja, as funcionalidades essenciais para o funcionamento do e-commerce.
@@ -103,6 +87,22 @@ Com essa estrutura, foram definidos os **contextos delimitados**, elaborando um 
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/subdominios.png" alt="separação de dominios" />
+</div>
+
+## 📦 Contextos Delimitados
+
+- **Cadastros:** Responsável pelo gerenciamento dos dados dos clientes, incluindo informações pessoais, endereços e preferências.
+
+- **Catálogo:** Gerencia a vitrine de produtos disponíveis para venda, suas descrições, imagens, preços e categorias.
+
+- **Vendas:** Envolve todo o fluxo de compras, desde a adição de produtos ao carrinho até a finalização do pedido.
+
+- **Pagamentos:** Lida com a validação e processamento de pagamentos via cartão de crédito, além da atualização do status do pedido com base na resposta da transação.
+
+- **Fiscal:** Responsável pela emissão da nota fiscal após a confirmação do pagamento, garantindo conformidade com as obrigações fiscais.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/contextos-delimitados.png" alt="contextos delimitados" />
 </div>
 
 ## 🗺️ Mapa de Contexto
@@ -161,7 +161,7 @@ Cada contexto adota uma arquitetura específica baseada em sua complexidade e re
 ### 📝 Arquitetura Monolito Modular:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/arquitetura-monolito-modular.png" alt="exemplo de arquitetura"/>
+  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/arquitetura-monolito-modular-2.png" alt="exemplo de arquitetura"/>
 </div>
 
 ### 📄 Estrutura do Projeto
