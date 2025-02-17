@@ -1,7 +1,7 @@
 # 🌐 Nerd Store
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/logo.png" alt="logo" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/logo.png" alt="logo" />
 </div>
 
 ## 💻 Sobre o projeto
@@ -86,7 +86,7 @@ Com essa estrutura, foram definidos os **contextos delimitados**, elaborando um 
     - **Pagamentos:** Processa transações financeiras e atualiza o status dos pedidos.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/subdominios.png" alt="separação de dominios" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/subdominios.png" alt="separação de dominios" />
 </div>
 
 ## 📦 Contextos Delimitados
@@ -102,7 +102,7 @@ Com essa estrutura, foram definidos os **contextos delimitados**, elaborando um 
 - **Fiscal:** Responsável pela emissão da nota fiscal após a confirmação do pagamento, garantindo conformidade com as obrigações fiscais.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/contextos-delimitados.png" alt="contextos delimitados" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/contextos-delimitados.png" alt="contextos delimitados" />
 </div>
 
 ## 🗺️ Mapa de Contexto
@@ -127,7 +127,7 @@ Com essa estrutura, foram definidos os **contextos delimitados**, elaborando um 
 - **Núcleo Compartilhado:** Contextos que compartilham um modelo de dados comum para evitar duplicação de informações e garantir consistência. Isso ocorre quando múltiplos módulos utilizam as mesmas entidades fundamentais.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/mapa-contexto.png" alt="mapa de contexto" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/mapa-contexto.png" alt="mapa de contexto" />
 </div>
 
 ## 🧩 Arquitetura
@@ -161,39 +161,39 @@ Cada contexto adota uma arquitetura específica baseada em sua complexidade e re
 ### 📝 Arquitetura Monolito Modular:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/arquitetura-monolito-modular-2.png" alt="exemplo de arquitetura"/>
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/arquitetura-monolito-modular-2.png" alt="exemplo de arquitetura"/>
 </div>
 
 ### 📄 Estrutura do Projeto
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/modules-2.png" alt="modelo de arquitetura no asp net" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/modules-2.png" alt="modelo de arquitetura no asp net" />
 </div>
 
 ## 🎨 Layout 
 
 ### 🖥️ Gerenciamento de Produtos
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-administracao.png" alt="tela de administração de produtos" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-administracao.png" alt="tela de administração de produtos" />
 </div>
 
 ### 🖥️ Catalogo de Produtos
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-vitrine.png" alt="tela de vitrine de produtos" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-vitrine.png" alt="tela de vitrine de produtos" />
 </div>
 
 ### 🖥️ Carrinho de Compras
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-carrinho.png" alt="tela de carrinho de compras" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-carrinho.png" alt="tela de carrinho de compras" />
 </div>
 
 ### 🖥️ Detalhe do Produto
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-produto.png" alt="tela do detalhe do produto" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-produto.png" alt="tela do detalhe do produto" />
 </div>
 
 ### 🖥️ Pagamento
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Willian-Brito/domain-driven-design/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-pagamento.png" alt="tela de pagamento" />
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-pagamento.png" alt="tela de pagamento" />
 </div>
 
 ## 📝 Licença
