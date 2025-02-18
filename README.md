@@ -132,7 +132,7 @@ Com essa estrutura, foram definidos os **contextos delimitados**, elaborando um 
 
 ## 🧩 Arquitetura
 
-A arquitetura do e-commerce foi projetada utilizando a abordagem **Monolito Modular Orientado a Eventos**, onde cada módulo representa um contexto delimitado e possui autonomia dentro do sistema. 
+A arquitetura do e-commerce foi projetada utilizando a abordagem **Monolito Modular Orientado a Eventos**, onde cada módulo representa um contexto delimitado e não possui dependência com outros contextos.
 
 Cada contexto adota uma arquitetura específica baseada em sua complexidade e requisitos de negócio, garantindo que as soluções aplicadas sejam adequadas para cada caso.
 

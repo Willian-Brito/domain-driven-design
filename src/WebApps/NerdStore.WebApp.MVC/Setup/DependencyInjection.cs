@@ -1,3 +1,5 @@
+using EventSourcing.Repositories;
+using EventSourcing.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NerdStore.Catalogo.Application.Services;
@@ -6,6 +8,7 @@ using NerdStore.Modules.Catalogo.Domain.Repositories;
 using NerdStore.Modules.Catalogo.Domain.Services;
 using NerdStore.Modules.Catalogo.Infrastructure.Context;
 using NerdStore.Modules.Core.Communication.Mediator;
+using NerdStore.Modules.Core.Data.EventSourcing;
 using NerdStore.Modules.Core.Messages.CommonMessages.IntegrationEvent;
 using NerdStore.Modules.Core.Messages.CommonMessages.Notifications;
 using NerdStore.Modules.Pagamentos.AntiCorruption.Config;
@@ -93,6 +96,11 @@ public static class DependencyInjection
         services.AddScoped<IConfigManager,ConfigManager>();
 
         services.AddScoped<INotificationHandler<PedidoEstoqueConfirmadoEvent>, PagamentoEventHandler>(); 
+        #endregion
+
+        #region EventSourcing        
+        services.AddSingleton<IEventStoreService, EventStoreService>();
+        services.AddSingleton<IEventSourcingRepository, EventSourcingRepository>();
         #endregion
 
         // var handlers = AppDomain.CurrentDomain.Load("NerdStore.Vendas.Application");

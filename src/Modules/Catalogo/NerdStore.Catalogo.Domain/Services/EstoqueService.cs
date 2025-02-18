@@ -55,7 +55,7 @@ public class EstoqueService : IEstoqueService
         // TODO: 10 pode ser parametrizavel em arquivo de configuração
         if (produto.QuantidadeEstoque < 10)
         {
-            await _messageBus.PublicarEvento(new ProdutoAbaixoEstoqueEvent(produto.Id, produto.QuantidadeEstoque));
+            await _messageBus.PublicarDomainEvent(new ProdutoAbaixoEstoqueEvent(produto.Id, produto.QuantidadeEstoque));
         }
 
         _produtoRepository.Atualizar(produto);

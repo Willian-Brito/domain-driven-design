@@ -9,6 +9,7 @@
     <ProjectReference Include="..\..\Modules\Vendas\NerdStore.Vendas.Infrastructure\NerdStore.Vendas.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Modules\Pagamentos\NerdStore.Pagamentos.Data\NerdStore.Pagamentos.Data.csproj" />
     <ProjectReference Include="..\..\Modules\Pagamentos\NerdStore.Pagamentos.AntiCorruption\NerdStore.Pagamentos.AntiCorruption.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\EventSourcing\EventSourcing.csproj" />
   </ItemGroup>
 
   <ItemGroup>
