@@ -190,7 +190,12 @@ Cada contexto adota uma arquitetura específica baseada em sua complexidade e re
 
     - **2.3** Baixando e Instalando EventStoreDB
     ```bash
-    $ sudo docker run --name eventstore -p 2113:2113 -p 1113:1113 -d eventstore/eventstore:latest --insecure
+    $ sudo docker run -p 2113:2113 -p 1113:1113 -d eventstore/eventstore:latest --insecure
+    ```
+
+    - **2.4** Link do EventStoreDB
+    ```bash
+    $ http://localhost:2113/web/index.html
     ```
 
 3. **Rodando Migrations**

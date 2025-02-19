@@ -2,6 +2,7 @@ namespace NerdStore.Modules.Vendas.Application.UseCases.ObterPedidosCliente.View
 
 public class PedidoViewModel
 {
+    public Guid Id { get; set; }
     public int Codigo { get; set; }
     public decimal ValorTotal { get; set; }
     public DateTime DataCadastro { get; set; }
