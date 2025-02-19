@@ -172,28 +172,45 @@ Cada contexto adota uma arquitetura específica baseada em sua complexidade e re
 ## 🔧 Instalação
 1. **Pré-requisitos**: 
    - Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-    [Git](https://git-scm.com), [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0), SQL Server e Event Store DB. 
+    [Git](https://git-scm.com), [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0), [SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads) e Event Store DB. 
     Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
 2. **Rodando Banco de Dados pelo Docker**:
   - **OBS:** Esses comandos foram executados em distribuições baseadas no Arch Linux.
 
-    - Iniciando Docker
+    - **2.1** Iniciando Docker
     ```bash
     $ sudo systemctl start docker
     ```
 
-    - Baixando e Instalando SQL Server
+    - **2.2** Baixando e Instalando SQL Server
     ```bash
     $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=sql@2019' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
     ```
 
-    - Baixando e Instalando EventStoreDB
+    - **2.3** Baixando e Instalando EventStoreDB
     ```bash
     $ sudo docker run --name eventstore -p 2113:2113 -p 1113:1113 -d eventstore/eventstore:latest --insecure
     ```
 
-3. **Instalando as Dependências**:
+3. **Rodando Migrations**
+    - **3.1** Crie o banco de Dados chamado NerdStoreDB
+
+    - **3.2** Execute esse comando na pasta **src/WebApps/NerdStore.WebApp.MVC**
+    ```bash
+    $  dotnet ef database update --context ApplicationDbContext
+    ```
+
+    - **3.3** Execute esse comando nas pastas: 
+      - **src/Modules/Catalogo/NerdStore.Catalogo.Infrastructure**
+      - **src/Modules/Vendas/NerdStore.Vendas.Infrastructure**
+      - **src/Modules/Pagamentos/NerdStore.Pagamentos.Data**
+    ```bash
+    $  dotnet ef database update
+    ```
+
+
+4. **Instalando as Dependências**:
   ```bash
   $ dotnet restore
   ```
