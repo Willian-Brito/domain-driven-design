@@ -41,8 +41,9 @@ public class CatalogoContext : DbContext, IUnitOfWork
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(connectionString);
 
-            optionsBuilder.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
-        }        
+        }
+             
+        optionsBuilder.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
     }
 
     public async Task<bool> Commit()

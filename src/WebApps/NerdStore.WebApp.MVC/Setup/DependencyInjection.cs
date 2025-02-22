@@ -63,9 +63,7 @@ public static class DependencyInjection
 
         services.AddScoped<INotificationHandler<ProdutoAbaixoEstoqueEvent>, ProdutoAbaixoEstoqueEventHandler>();
         services.AddScoped<INotificationHandler<PedidoIniciadoEvent>, ProdutoSaidaEstoqueEventHandler>();
-        services.AddScoped<INotificationHandler<PedidoProcessamentoCanceladoEvent>, ProdutoEntradaEstoqueEventHandler>();
-
-        // services.AddScoped<CatalogoContext>();
+        services.AddScoped<INotificationHandler<PedidoProcessamentoCanceladoEvent>, ProdutoEntradaEstoqueEventHandler>();        
         #endregion
 
         #region Vendas
@@ -105,9 +103,6 @@ public static class DependencyInjection
         services.AddSingleton<IEventSourcingRepository, EventSourcingRepository>();
         services.AddScoped<IRequestHandler<ObterEventosQuery, IEnumerable<EventosViewModel>>, ObterEventosQuery.ObterEventosQueryHandler>();
         #endregion
-
-        // var handlers = AppDomain.CurrentDomain.Load("NerdStore.Vendas.Application");
-        // services.AddMediatR(config => config.RegisterServicesFromAssemblies(handlers));
     }
 
     public static void AddDatabaseContext(this IServiceCollection services, IConfiguration configuration)
@@ -129,11 +124,6 @@ public static class DependencyInjection
                 options.UseSqlServer(connectionString, x => x.MigrationsAssembly(typeof(PagamentoContext).Namespace)));
 
         // services.AddEventStoreClient(eventStoreConnection);
-
-        // services.AddDatabaseDeveloperPageExceptionFilter();
-
-        // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-        //     .AddEntityFrameworkStores<ApplicationDbContext>();
     }
 
     public static void ApplyMigrations(this IApplicationBuilder app)
@@ -147,9 +137,9 @@ public static class DependencyInjection
             }
 
             MigrateDb<ApplicationDbContext>(serviceScope);
+            MigrateDb<CatalogoContext>(serviceScope);
             MigrateDb<VendasContext>(serviceScope);
             MigrateDb<PagamentoContext>(serviceScope);
-            // MigrateDb<CatalogoContext>(serviceScope);
         }
     }
 }

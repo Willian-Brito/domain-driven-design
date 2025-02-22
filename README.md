@@ -176,48 +176,33 @@ Cada contexto adota uma arquitetura específica baseada em sua complexidade e re
     Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
 2. **Rodando Banco de Dados pelo Docker**:
-  - **OBS:** Esses comandos foram executados em distribuições baseadas no Arch Linux.
 
-    - **2.1** Iniciando Docker
     ```bash
-    $ sudo systemctl start docker
+      # Iniciando Docker
+      $ sudo systemctl start docker
+
+      # Rodando SQL Server
+      $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=sql@2019' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
+
+      # Rodando EventStoreDB
+      $ sudo docker run -p 2113:2113 -p 1113:1113 -d eventstore/eventstore:latest --insecure
+
+      # Link do EventStoreDB
+      $ http://localhost:2113/web/index.html
     ```
 
-    - **2.2** Baixando e Instalando SQL Server
+3. **Instalando as Dependências**:
     ```bash
-    $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=sql@2019' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
+    $ dotnet restore
     ```
 
-    - **2.3** Baixando e Instalando EventStoreDB
-    ```bash
-    $ sudo docker run -p 2113:2113 -p 1113:1113 -d eventstore/eventstore:latest --insecure
-    ```
-
-    - **2.4** Link do EventStoreDB
-    ```bash
-    $ http://localhost:2113/web/index.html
-    ```
-
-3. **Rodando Migrations**
-    - **3.1** Crie o banco de Dados chamado NerdStoreDB
-
-    - **3.2** Execute esse comando na pasta **src/WebApps/NerdStore.WebApp.MVC**
-    ```bash
-    $  dotnet ef database update --context ApplicationDbContext
-    ```
-
-    - **3.3** Execute esse comando nas pastas: 
-      - **src/Modules/Catalogo/NerdStore.Catalogo.Infrastructure**
-      - **src/Modules/Vendas/NerdStore.Vendas.Infrastructure**
-      - **src/Modules/Pagamentos/NerdStore.Pagamentos.Data**
-    ```bash
-    $  dotnet ef database update
-    ```
-
-
-4. **Instalando as Dependências**:
+## 🚀 Rodando o projeto
   ```bash
-  $ dotnet restore
+    # Entrando na pasta de execução do projeto
+    $ cd src/WebApps/NerdStore.WebApp.MVC  
+
+    # Executando Projeto
+    $ dotnet run
   ```
 
 ## 🎨 Layout 

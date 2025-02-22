@@ -56,6 +56,15 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                     b.Property<decimal>("Valor")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("Altura")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Largura")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Profundidade")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
@@ -73,7 +82,10 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Imagem = "camiseta2.jpg",
                             Nome = "Camiseta Premium",
                             QuantidadeEstoque = 3,
-                            Valor = 90m
+                            Valor = 90m,
+                            Altura = 5M,
+                            Largura = 5M, 
+                            Profundidade = 5M
                         },
                         new
                         {
@@ -85,7 +97,10 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Imagem = "caneca4.jpg",
                             Nome = "Caneca Cerâmica Master",
                             QuantidadeEstoque = 5,
-                            Valor = 10m
+                            Valor = 10m,
+                            Altura = 12M,
+                            Largura = 8M,
+                            Profundidade = 5M
                         },
                         new
                         {
@@ -97,7 +112,10 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Imagem = "camiseta4.jpg",
                             Nome = "Camiseta Urban Fit",
                             QuantidadeEstoque = 23,
-                            Valor = 110m
+                            Valor = 110m,
+                            Altura = 5M,
+                            Largura = 5M,
+                            Profundidade = 5M
                         },
                         new
                         {
@@ -109,7 +127,10 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Imagem = "camiseta3.jpg",
                             Nome = "Camiseta SoftTouch",
                             QuantidadeEstoque = 15,
-                            Valor = 80m
+                            Valor = 80m,
+                            Altura = 5M,
+                            Largura = 5M,
+                            Profundidade = 5M
                         },
                         new
                         {
@@ -121,7 +142,10 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Imagem = "caneca1.jpg",
                             Nome = "Caneca Magic Color",
                             QuantidadeEstoque = 5,
-                            Valor = 20m
+                            Valor = 20m,
+                            Altura = 12M,
+                            Largura = 8M,
+                            Profundidade = 5M
                         },
                         new
                         {
@@ -133,7 +157,10 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Imagem = "caneca2.jpg",
                             Nome = "Caneca Gamer XL",
                             QuantidadeEstoque = 8,
-                            Valor = 15m
+                            Valor = 15m,
+                            Altura = 12M,
+                            Largura = 8M,
+                            Profundidade = 5M
                         },
                         new
                         {
@@ -145,7 +172,10 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Imagem = "camiseta1.jpg",
                             Nome = "Camiseta Classic Print",
                             QuantidadeEstoque = 8,
-                            Valor = 100m
+                            Valor = 100m,
+                            Altura = 5M,
+                            Largura = 5M,
+                            Profundidade = 5M
                         },
                         new
                         {
@@ -157,7 +187,10 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Imagem = "caneca3.jpg",
                             Nome = "Caneca Personal Print",
                             QuantidadeEstoque = 5,
-                            Valor = 20m
+                            Valor = 20m,
+                            Altura = 12M,
+                            Largura = 8M,
+                            Profundidade = 5M
                         });
                 });
 
