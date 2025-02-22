@@ -5,7 +5,7 @@ using NerdStore.Modules.Vendas.Domain.Aggregates;
 using NerdStore.Modules.Vendas.Domain.Entities;
 using NerdStore.Modules.Vendas.Domain.Enum;
 using NerdStore.Modules.Vendas.Domain.Repositories;
-using NerdStore.Modules.Vendas.Infrastructure.Context;
+using NerdStore.Vendas.Infrastructure;
 
 namespace NerdStore.Modules.Vendas.Infrastructure.Repositories;
 

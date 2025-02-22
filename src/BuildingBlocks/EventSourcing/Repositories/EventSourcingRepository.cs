@@ -1,68 +1,70 @@
 ﻿using EventSourcing.Services;
-using EventStore.ClientAPI;
+using EventStore.Client;
 using NerdStore.Modules.Core.Data.EventSourcing;
 using NerdStore.Modules.Core.Messages;
-using Newtonsoft.Json;
 using System.Text;
+using System.Text.Json;
 
 namespace EventSourcing.Repositories;
 
 public class EventSourcingRepository : IEventSourcingRepository
-{
+{    
     private readonly IEventStoreService _eventStoreService;
-
+    
     public EventSourcingRepository(IEventStoreService eventStoreService)
-    {
+    {        
         _eventStoreService = eventStoreService;
     }
 
     public async Task<IEnumerable<StoredEvent>> ObterEventos(Guid aggregateId)
     {
-        var eventos = await _eventStoreService.GetConnection().ReadStreamEventsForwardAsync(
+        var eventStore = _eventStoreService.GetConnection();
+        var stream = eventStore.ReadStreamAsync(
+            Direction.Forwards,
             aggregateId.ToString(),
-            0,
-            500,
-            false   
+            StreamPosition.Start,
+            maxCount: 500
         );
 
-        var listaEventos = new List<StoredEvent>();
+        var eventos = new List<StoredEvent>();
 
-        foreach (var resolvedEvent in eventos.Events)
+        if (await stream.ReadState == ReadState.StreamNotFound)
+                return eventos;
+
+        await foreach (var resolvedEvent in stream)
         {
-            var dataEncoded = Encoding.UTF8.GetString(resolvedEvent.Event.Data);
-            var jsonData = JsonConvert.DeserializeObject<BaseEvent>(dataEncoded);
+            var dataEncoded = Encoding.UTF8.GetString(resolvedEvent.Event.Data.ToArray());
+            var json = JsonSerializer.Deserialize<BaseEvent>(dataEncoded);
 
-            var evento = new StoredEvent(
-                resolvedEvent.Event.EventId,
+            var storedEvent = new StoredEvent(
+                resolvedEvent.Event.EventId.ToGuid(),
                 resolvedEvent.Event.EventType,
-                jsonData.Timestamp,
+                json.Timestamp,
                 dataEncoded
             );
 
-            listaEventos.Add(evento);
+            eventos.Add(storedEvent);
         }
 
-        return listaEventos.OrderBy(e => e.DataOcorrencia);
+        return eventos.OrderBy(o => o.DataOcorrencia);
     }
 
     public async Task SalvarEvento<TEvent>(TEvent evento) where TEvent : Event
     {
-        await _eventStoreService.GetConnection().AppendToStreamAsync(
-            evento.AggregateId.ToString(),
-            ExpectedVersion.Any,
-            FormatarEvento(evento)
-        );
-    }
+        var utf8Bytes = JsonSerializer.SerializeToUtf8Bytes(evento);
 
-    private static IEnumerable<EventData> FormatarEvento<TEvento>(TEvento evento) where TEvento : Event
-    {
-        yield return new EventData(
-            Guid.NewGuid(), 
-            evento.MessageType, 
-            true, 
-            Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(evento)), 
-            null
+        var eventData = new EventData( 
+            Uuid.NewUuid(),
+            evento.MessageType,
+            utf8Bytes.AsMemory() 
         );
+
+        var eventStore = _eventStoreService.GetConnection();
+        await eventStore.AppendToStreamAsync( 
+            evento.AggregateId.ToString(),
+            StreamState.Any,
+            new[ ] { eventData } 
+        );    
     }
 }
 

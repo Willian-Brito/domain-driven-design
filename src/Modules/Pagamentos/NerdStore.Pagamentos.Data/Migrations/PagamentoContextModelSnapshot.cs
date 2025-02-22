@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NerdStore.Modules.Pagamentos.Data.Context;
+using NerdStore.Pagamentos.Data;
 
 #nullable disable
 

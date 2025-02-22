@@ -4,8 +4,8 @@
     <ProjectReference Include="..\..\Modules\Core\NerdStore.Core\NerdStore.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="EventStore.Client" Version="5.0.1" />
+  <ItemGroup>    
+    <PackageReference Include="EventStore.Client.Grpc.Streams" Version="23.3.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
   </ItemGroup>
 

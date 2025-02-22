@@ -7,7 +7,7 @@ using NerdStore.Modules.Pagamentos.Business.Aggregates;
 using NerdStore.Modules.Pagamentos.Business.Entities;
 using NerdStore.Modules.Pagamentos.Data.Extensions;
 
-namespace NerdStore.Modules.Pagamentos.Data.Context;
+namespace NerdStore.Pagamentos.Data;
 
 public class PagamentoContext : DbContext, IUnitOfWork
 {

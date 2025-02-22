@@ -3,10 +3,10 @@ using EventSourcing.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NerdStore.Catalogo.Application.Services;
+using NerdStore.Catalogo.Infrastructure;
 using NerdStore.Modules.Catalogo.Domain.Events;
 using NerdStore.Modules.Catalogo.Domain.Repositories;
 using NerdStore.Modules.Catalogo.Domain.Services;
-using NerdStore.Modules.Catalogo.Infrastructure.Context;
 using NerdStore.Modules.Core.Communication.Mediator;
 using NerdStore.Modules.Core.Data.EventSourcing;
 using NerdStore.Modules.Core.Messages.CommonMessages.IntegrationEvent;
@@ -18,7 +18,6 @@ using NerdStore.Modules.Pagamentos.Business.Events;
 using NerdStore.Modules.Pagamentos.Business.Facade;
 using NerdStore.Modules.Pagamentos.Business.Repositories;
 using NerdStore.Modules.Pagamentos.Business.Services;
-using NerdStore.Modules.Pagamentos.Data.Context;
 using NerdStore.Modules.Pagamentos.Data.Repositories;
 using NerdStore.Modules.Vendas.Application.UseCases.AdicionarItemPedido.Commands;
 using NerdStore.Modules.Vendas.Application.UseCases.AdicionarItemPedido.Events;
@@ -34,12 +33,15 @@ using NerdStore.Modules.Vendas.Application.UseCases.FinalizarPedido.Events;
 using NerdStore.Modules.Vendas.Application.UseCases.IniciarPedido.Commands;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterCarrinhoCliente.Queries;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterCarrinhoCliente.ViewModel;
+using NerdStore.Modules.Vendas.Application.UseCases.ObterEventos.Queries;
+using NerdStore.Modules.Vendas.Application.UseCases.ObterEventos.ViewModel;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterPedidosCliente.Queries;
 using NerdStore.Modules.Vendas.Application.UseCases.ObterPedidosCliente.ViewModel;
 using NerdStore.Modules.Vendas.Application.UseCases.RemoverItemPedido.Commands;
 using NerdStore.Modules.Vendas.Domain.Repositories;
-using NerdStore.Modules.Vendas.Infrastructure.Context;
 using NerdStore.Modules.Vendas.Infrastructure.Repositories;
+using NerdStore.Pagamentos.Data;
+using NerdStore.Vendas.Infrastructure;
 using NerdStore.WebApp.MVC.Data;
 
 namespace NerdStore.WebApp.MVC.Setup;
@@ -101,6 +103,7 @@ public static class DependencyInjection
         #region EventSourcing        
         services.AddSingleton<IEventStoreService, EventStoreService>();
         services.AddSingleton<IEventSourcingRepository, EventSourcingRepository>();
+        services.AddScoped<IRequestHandler<ObterEventosQuery, IEnumerable<EventosViewModel>>, ObterEventosQuery.ObterEventosQueryHandler>();
         #endregion
 
         // var handlers = AppDomain.CurrentDomain.Load("NerdStore.Vendas.Application");
@@ -111,6 +114,7 @@ public static class DependencyInjection
     {
         // Add services to the container.
         var connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+        var eventStoreConnection = configuration.GetConnectionString("EventStoreConnection") ?? throw new InvalidOperationException("Connection string 'EventStoreConnection' not found.");
 
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(connectionString));
@@ -124,9 +128,28 @@ public static class DependencyInjection
         services.AddDbContext<PagamentoContext>(options =>
                 options.UseSqlServer(connectionString, x => x.MigrationsAssembly(typeof(PagamentoContext).Namespace)));
 
+        // services.AddEventStoreClient(eventStoreConnection);
+
         // services.AddDatabaseDeveloperPageExceptionFilter();
 
         // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
         //     .AddEntityFrameworkStores<ApplicationDbContext>();
+    }
+
+    public static void ApplyMigrations(this IApplicationBuilder app)
+    {
+        using (var serviceScope = app.ApplicationServices.CreateScope())
+        {
+            void MigrateDb<T>(IServiceScope scope) where T : DbContext
+            {
+                var context = scope.ServiceProvider.GetService<T>();
+                context?.Database.Migrate();
+            }
+
+            MigrateDb<ApplicationDbContext>(serviceScope);
+            MigrateDb<VendasContext>(serviceScope);
+            MigrateDb<PagamentoContext>(serviceScope);
+            // MigrateDb<CatalogoContext>(serviceScope);
+        }
     }
 }

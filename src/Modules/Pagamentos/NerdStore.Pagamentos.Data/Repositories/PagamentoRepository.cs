@@ -4,7 +4,7 @@ using NerdStore.Modules.Core.Data;
 using NerdStore.Modules.Pagamentos.Business.Aggregates;
 using NerdStore.Modules.Pagamentos.Business.Entities;
 using NerdStore.Modules.Pagamentos.Business.Repositories;
-using NerdStore.Modules.Pagamentos.Data.Context;
+using NerdStore.Pagamentos.Data;
 
 namespace NerdStore.Modules.Pagamentos.Data.Repositories;
  public class PagamentoRepository : IPagamentoRepository

@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NerdStore.Modules.Vendas.Infrastructure.Context;
+using NerdStore.Vendas.Infrastructure;
 
 #nullable disable
 
 namespace NerdStore.Vendas.Infrastructure.Migrations
 {
     [DbContext(typeof(VendasContext))]
-    [Migration("20250208180615_Initial")]
-    partial class Initial
+    [Migration("20250220003233_InitialVendas")]
+    partial class InitialVendas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -136,6 +136,32 @@ namespace NerdStore.Vendas.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vouchers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d4e1f2a3-b567-c890-1234-56789abcdef0"),
+                            Ativo = true,
+                            Codigo = "WILL-V30",
+                            DataCriacao = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataValidade = new DateTime(2025, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Quantidade = 1,
+                            TipoDescontoVoucher = 1,
+                            Utilizado = false,
+                            ValorDesconto = 30m
+                        },
+                        new
+                        {
+                            Id = new Guid("a1b2c3d4-e5f6-7890-1234-abcdef987654"),
+                            Ativo = true,
+                            Codigo = "WILL-P10",
+                            DataCriacao = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataValidade = new DateTime(2025, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Percentual = 10m,
+                            Quantidade = 1,
+                            TipoDescontoVoucher = 0,
+                            Utilizado = false
+                        });
                 });
 
             modelBuilder.Entity("NerdStore.Modules.Vendas.Domain.Aggregates.Pedido", b =>

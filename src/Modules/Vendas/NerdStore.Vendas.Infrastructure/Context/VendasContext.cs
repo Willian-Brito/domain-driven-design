@@ -7,7 +7,7 @@ using NerdStore.Modules.Vendas.Domain.Aggregates;
 using NerdStore.Modules.Vendas.Domain.Entities;
 using NerdStore.Modules.Vendas.Infrastructure.Extension;
 
-namespace NerdStore.Modules.Vendas.Infrastructure.Context;
+namespace NerdStore.Vendas.Infrastructure;
 
 public class VendasContext : DbContext, IUnitOfWork
 {

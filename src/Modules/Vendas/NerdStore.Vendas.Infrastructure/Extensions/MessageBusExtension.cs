@@ -1,6 +1,6 @@
 using NerdStore.Modules.Core.Communication.Mediator;
 using NerdStore.Modules.Core.DomainObjects;
-using NerdStore.Modules.Vendas.Infrastructure.Context;
+using NerdStore.Vendas.Infrastructure;
 
 namespace NerdStore.Modules.Vendas.Infrastructure.Extension;
 

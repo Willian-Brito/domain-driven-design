@@ -1,6 +1,6 @@
 ﻿using NerdStore.Modules.Core.Communication.Mediator;
 using NerdStore.Modules.Core.DomainObjects;
-using NerdStore.Modules.Pagamentos.Data.Context;
+using NerdStore.Pagamentos.Data;
 
 namespace NerdStore.Modules.Pagamentos.Data.Extensions;
 public static class MessageBusExtension

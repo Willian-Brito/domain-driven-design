@@ -20,7 +20,7 @@ public class VoucherConfiguration : IEntityTypeConfiguration<Voucher>
                 Quantidade = 1,
                 TipoDescontoVoucher = TipoDescontoVoucher.Valor,
                 DataCriacao = new DateTime(2025, 2, 1),
-                DataValidade = new DateTime(2025, 2, 28),
+                DataValidade = new DateTime(2025, 3, 20),
                 Ativo = true,
                 Utilizado = false
             },
@@ -32,7 +32,7 @@ public class VoucherConfiguration : IEntityTypeConfiguration<Voucher>
                 Quantidade = 1,
                 TipoDescontoVoucher = TipoDescontoVoucher.Porcentagem,
                 DataCriacao = new DateTime(2025, 2, 1),
-                DataValidade = new DateTime(2025, 2, 28),
+                DataValidade = new DateTime(2025, 3, 20),
                 Ativo = true,
                 Utilizado = false
             }

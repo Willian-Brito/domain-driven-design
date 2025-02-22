@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NerdStore.Modules.Catalogo.Infrastructure.Context;
+using NerdStore.Catalogo.Infrastructure;
 
 #nullable disable
 
 namespace NerdStore.Catalogo.Infrastructure.Migrations
 {
     [DbContext(typeof(CatalogoContext))]
-    [Migration("20250201160012_SeedProducts")]
-    partial class SeedProducts
+    [Migration("20250220004342_InitialCatalogo")]
+    partial class InitialCatalogo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,7 +74,7 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descricao = "Feita com 100% algodão para máximo conforto e durabilidade",
                             Imagem = "camiseta2.jpg",
-                            Nome = "Camiseta Algodão Premium",
+                            Nome = "Camiseta Premium",
                             QuantidadeEstoque = 3,
                             Valor = 90m
                         },
@@ -144,7 +144,7 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Ativo = true,
                             CategoriaId = new Guid("eb43126c-d516-4032-907a-2b578ccbcd61"),
                             DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Descricao = "Clássica e versátil, ideal para qualquer ocasião",
+                            Descricao = "Clássica, estilosa e versátil, ideal para qualquer ocasião",
                             Imagem = "camiseta1.jpg",
                             Nome = "Camiseta Classic Print",
                             QuantidadeEstoque = 8,
@@ -185,19 +185,19 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5d2074ca-9181-440b-bad9-77d4d5f67904"),
+                            Id = new Guid("42d46079-089e-4e29-b8bd-ea1ef2b00da3"),
                             Codigo = 102,
                             Nome = "Adesivos"
                         },
                         new
                         {
-                            Id = new Guid("1f4d2cb1-1869-4816-8c29-204e2effec3e"),
+                            Id = new Guid("eb43126c-d516-4032-907a-2b578ccbcd61"),
                             Codigo = 100,
                             Nome = "Camisetas"
                         },
                         new
                         {
-                            Id = new Guid("194ef033-9e92-4be4-b6e7-a8f74c711d25"),
+                            Id = new Guid("1b8a1e23-5a9d-42c2-a632-798e3a4a88a2"),
                             Codigo = 101,
                             Nome = "Canecas"
                         });

@@ -6,7 +6,7 @@ using NerdStore.Modules.Catalogo.Domain.Entity;
 using NerdStore.Modules.Core.Data;
 using NerdStore.Modules.Core.Messages;
 
-namespace NerdStore.Modules.Catalogo.Infrastructure.Context;
+namespace NerdStore.Catalogo.Infrastructure;
 
 public class CatalogoContext : DbContext, IUnitOfWork
 {

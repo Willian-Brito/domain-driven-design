@@ -77,7 +77,7 @@ public class CarrinhoController : Base.ControllerBase
         var command = new RemoverItemPedidoCommand(_messageBus, ClienteId, id);
         await _messageBus.EnviarComando(command);
 
-        if (OperacaoValida()) return RedirectToAction("'Index");
+        if (OperacaoValida()) return RedirectToAction("Index");
 
         var carrinho = await GetCarrinhoViewModel();
 

@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NerdStore.Modules.Pagamentos.Data.Context;
+using NerdStore.Pagamentos.Data;
 
 #nullable disable
 
 namespace NerdStore.Pagamentos.Data.Migrations
 {
     [DbContext(typeof(PagamentoContext))]
-    [Migration("20250212234655_Initial")]
-    partial class Initial
+    [Migration("20250220005910_InitialPagamento")]
+    partial class InitialPagamento
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

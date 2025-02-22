@@ -1,7 +1,7 @@
-﻿using EventStore.ClientAPI;
+﻿using EventStore.Client;
 
 namespace EventSourcing.Services;
 public interface IEventStoreService
 {
-    IEventStoreConnection GetConnection();
+    EventStoreClient GetConnection();
 }

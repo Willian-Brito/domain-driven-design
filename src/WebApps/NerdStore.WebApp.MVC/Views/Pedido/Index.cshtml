@@ -40,15 +40,15 @@
                                                 <h4>
 
                                                     @{
-                                                        if (pedido.PedidoStatus == 4)
+                                                        if (pedido.PedidoStatus == 2)
                                                         {
-                                                            <span class="badge badge-success">
+                                                            <span class="badge bg-success">
                                                                 Pago
                                                             </span>
                                                         }
-                                                        else if (pedido.PedidoStatus == 6)
+                                                        else if (pedido.PedidoStatus == 4)
                                                         {
-                                                            <span class="badge badge-danger">
+                                                            <span class="badge bg-danger">
                                                                 Cancelado
                                                             </span>
                                                         }
@@ -57,7 +57,7 @@
                                                 </h4>
                                             </td>
                                             <td>@pedido.ValorTotal.ToString("C")</td>
-                                            <td><a class="btn btn-info" asp-controller="Eventos" asp-action="Index" asp-route-id="@pedido.Id"><span class="far fa-clock"></span></a></td>
+                                            <td><a class="btn btn-info" asp-controller="Evento" asp-action="Index" asp-route-id="@pedido.Id"><span class="far fa-clock"></span></a></td>
                                         </tr>
                                     }
                                 }

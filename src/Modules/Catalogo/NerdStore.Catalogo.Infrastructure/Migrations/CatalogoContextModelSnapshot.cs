@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NerdStore.Modules.Catalogo.Infrastructure.Context;
+using NerdStore.Catalogo.Infrastructure;
 
 #nullable disable
 
@@ -68,10 +68,10 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Id = new Guid("b21e5a57-89ab-cdef-0123-456789abcdef"),
                             Ativo = true,
                             CategoriaId = new Guid("eb43126c-d516-4032-907a-2b578ccbcd61"),
-                            DataCadastro = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descricao = "Feita com 100% algodão para máximo conforto e durabilidade",
                             Imagem = "camiseta2.jpg",
-                            Nome = "Camiseta Algodão Premium",
+                            Nome = "Camiseta Premium",
                             QuantidadeEstoque = 3,
                             Valor = 90m
                         },
@@ -80,7 +80,7 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Id = new Guid("f4d3a756-89ab-cdef-0123-456789abcdef"),
                             Ativo = true,
                             CategoriaId = new Guid("1b8a1e23-5a9d-42c2-a632-798e3a4a88a2"),
-                            DataCadastro = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descricao = "Resistente e perfeita para café, chá ou chocolate quente",
                             Imagem = "caneca4.jpg",
                             Nome = "Caneca Cerâmica Master",
@@ -92,7 +92,7 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Id = new Guid("7ad3b789-89ab-cdef-0123-456789abcdef"),
                             Ativo = true,
                             CategoriaId = new Guid("eb43126c-d516-4032-907a-2b578ccbcd61"),
-                            DataCadastro = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descricao = "Modelagem moderna e estilosa, perfeita para o dia a dia",
                             Imagem = "camiseta4.jpg",
                             Nome = "Camiseta Urban Fit",
@@ -104,7 +104,7 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Id = new Guid("a9f3c872-89ab-cdef-0123-456789abcdef"),
                             Ativo = true,
                             CategoriaId = new Guid("eb43126c-d516-4032-907a-2b578ccbcd61"),
-                            DataCadastro = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descricao = "Tecido leve e macio para quem busca conforto absoluto",
                             Imagem = "camiseta3.jpg",
                             Nome = "Camiseta SoftTouch",
@@ -116,7 +116,7 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Id = new Guid("9a4e9ab0-89ab-cdef-0123-456789abcdef"),
                             Ativo = true,
                             CategoriaId = new Guid("1b8a1e23-5a9d-42c2-a632-798e3a4a88a2"),
-                            DataCadastro = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descricao = "Muda de cor com líquidos quentes, um toque de magia no seu dia",
                             Imagem = "caneca1.jpg",
                             Nome = "Caneca Magic Color",
@@ -128,7 +128,7 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Id = new Guid("c7d8e512-89ab-cdef-0123-456789abcdef"),
                             Ativo = true,
                             CategoriaId = new Guid("1b8a1e23-5a9d-42c2-a632-798e3a4a88a2"),
-                            DataCadastro = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descricao = "Capacidade maior para quem precisa de mais energia",
                             Imagem = "caneca2.jpg",
                             Nome = "Caneca Gamer XL",
@@ -140,8 +140,8 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Id = new Guid("a48db94e-89ab-cdef-0123-456789abcdef"),
                             Ativo = true,
                             CategoriaId = new Guid("eb43126c-d516-4032-907a-2b578ccbcd61"),
-                            DataCadastro = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Descricao = "Clássica e versátil, ideal para qualquer ocasião",
+                            DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Descricao = "Clássica, estilosa e versátil, ideal para qualquer ocasião",
                             Imagem = "camiseta1.jpg",
                             Nome = "Camiseta Classic Print",
                             QuantidadeEstoque = 8,
@@ -152,7 +152,7 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                             Id = new Guid("d6b4f3a0-89ab-cdef-0123-456789abcdef"),
                             Ativo = true,
                             CategoriaId = new Guid("1b8a1e23-5a9d-42c2-a632-798e3a4a88a2"),
-                            DataCadastro = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataCadastro = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descricao = "Personalize com sua estampa favorita e torne-a única",
                             Imagem = "caneca3.jpg",
                             Nome = "Caneca Personal Print",
@@ -182,19 +182,19 @@ namespace NerdStore.Catalogo.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5d2074ca-9181-440b-bad9-77d4d5f67904"),
+                            Id = new Guid("42d46079-089e-4e29-b8bd-ea1ef2b00da3"),
                             Codigo = 102,
                             Nome = "Adesivos"
                         },
                         new
                         {
-                            Id = new Guid("1f4d2cb1-1869-4816-8c29-204e2effec3e"),
+                            Id = new Guid("eb43126c-d516-4032-907a-2b578ccbcd61"),
                             Codigo = 100,
                             Nome = "Camisetas"
                         },
                         new
                         {
-                            Id = new Guid("194ef033-9e92-4be4-b6e7-a8f74c711d25"),
+                            Id = new Guid("1b8a1e23-5a9d-42c2-a632-798e3a4a88a2"),
                             Codigo = 101,
                             Nome = "Canecas"
                         });

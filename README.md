@@ -247,6 +247,16 @@ Cada contexto adota uma arquitetura específica baseada em sua complexidade e re
   <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-pagamento.png" alt="tela de pagamento" />
 </div>
 
+### 🖥️ Tela de Pedidos
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-pedidos.png" alt="tela de pedidos" />
+</div>
+
+### 🖥️ Tela de Eventos
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Willian-Brito/nerd-store/refs/heads/main/src/WebApps/NerdStore.WebApp.MVC/wwwroot/prints/tela-de-eventos.png" alt="tela de eventos" />
+</div>
+
 ## 📝 Licença
 
 Este projeto esta sobe a licença [MIT](https://github.com/Willian-Brito/domain-driven-design/blob/main/LICENSE).
